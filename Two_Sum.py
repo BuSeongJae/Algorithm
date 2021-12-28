@@ -32,3 +32,28 @@ def twoSum_3(nums, target):
     for i, num in enumerate(nums):
         if target - num in nums_map and i != nums_map[target - num]:
             return[i, nums_map[target - num]]
+
+
+def twoSum_4(nums, target):
+    nums_map= {}
+    # Integrate in one for:
+    for i, num in enumerate(nums):
+        if target - num in nums_map:
+            return [nums_map[target-num], i]
+        nums_map[num] = i
+
+
+def twoSum_5(nums, target):
+    left, right = 0, len(nums)-1
+    while not left ==right:
+        #if sum is less than target move left pointer to right
+        if nums[left] + nums[right] < target:
+            left += 1
+        #if sum is bigger target move right pointer to left
+        elif nums[left] + nums[right] > target:
+            right -= 1
+        else:
+            return[left, right]
+
+print(twoSum_4(nums, target))
+print(twoSum_5(nums, target))
