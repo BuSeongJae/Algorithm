@@ -17,3 +17,22 @@ def Product_of_array_except_self(nums):
 nums = [-1, 1, 0, -3, 3]
 print(Product_of_array_except_self(nums))
 
+
+#  book answer O(n)
+def productExceptSelf(nums):
+    out = []
+    p = 1
+    # left product
+    for i in range(0, len(nums)):
+        out.append(p)
+        p = p * nums[i]
+
+    p = 1
+    # product left num and right num
+    for i in range(len(nums) - 1, 0 - 1, -1):
+        out[i] = out[i] * p
+        p = p * nums[i]
+    return out
+
+print(productExceptSelf(nums))
+
